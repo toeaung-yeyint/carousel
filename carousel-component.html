@@ -8,37 +8,48 @@
 		<title>Carousel component</title>
 	</head>
 	<body>
-		<section class="carousel" aria-label="Image Carousel of Landmarks">
-			<ul class="slide-container">
+		<section class="carousel">
+			<ul class="slide-container" aria-live="assertive">
 				<li class="slide active-slide">
-					<img src="bagan.jpg" alt="" />
+					<img src="bagan.jpg" alt="Temples in Old Bagan, Myanmar" />
 				</li>
 				<li class="slide">
-					<img src="shwedagon-pagoda.jpg" alt="" />
-				</li>
-
-				<li class="slide">
-					<img src="eiffel-tower.jpg" alt="" />
-				</li>
-				<li class="slide">
-					<img src="princes-bridge.jpg" alt="" />
+					<img
+						src="shwedagon-pagoda.jpg"
+						alt="Shwedagon Pagoda in Yangon, Myanmar"
+					/>
 				</li>
 				<li class="slide">
-					<img src="great-pyramid.jpg" alt="" />
+					<img src="eiffel-tower.jpg" alt="Eiffel Tower in Paris, France" />
+				</li>
+				<li class="slide">
+					<img
+						src="princes-bridge.jpg"
+						alt="Princes Bridge in Melbourne, Australia"
+					/>
+				</li>
+				<li class="slide">
+					<img src="great-pyramid.jpg" alt="Great Pyramid of Giza, Egypt" />
 				</li>
 			</ul>
-			<button class="carousel-btn prev-btn" aria-label="Previous Button">
+			<button
+				class="carousel-btn prev-btn"
+				aria-label="Previous Image in Carousel"
+			>
 				&#x276E;
 			</button>
-			<button class="carousel-btn next-btn" aria-label="Next Button">
+			<button class="carousel-btn next-btn" aria-label="Next Image in Carousel">
 				&#x276F;
 			</button>
-			<nav class="radio-btn-container" aria-label="Radio Button Navigation">
-				<button class="radio-btn active-radio-btn"></button>
-				<button class="radio-btn"></button>
-				<button class="radio-btn"></button>
-				<button class="radio-btn"></button>
-				<button class="radio-btn"></button>
+			<nav class="radio-btn-container" aria-label="Navigation for Image Slides">
+				<button
+					class="radio-btn active-radio-btn"
+					aria-label="Go to Slide 1"
+				></button>
+				<button class="radio-btn" aria-label="Go to Slide 2"></button>
+				<button class="radio-btn" aria-label="Go to Slide 3"></button>
+				<button class="radio-btn" aria-label="Go to Slide 4"></button>
+				<button class="radio-btn" aria-label="Go to Slide 5"></button>
 			</nav>
 		</section>
 	</body>

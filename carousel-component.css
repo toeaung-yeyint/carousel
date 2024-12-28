@@ -26,8 +26,7 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	opacity: 0;
-	transition: opacity 200ms ease-in-out;
+	display: none;
 }
 .slide img {
 	width: 100%;
@@ -36,7 +35,7 @@ body {
 	border-radius: 5px;
 }
 .active-slide {
-	opacity: 1;
+	display: block;
 }
 .carousel-btn {
 	z-index: 3;
