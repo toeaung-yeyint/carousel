@@ -27,8 +27,7 @@ body {
 	top: 0;
 	left: 0;
 	opacity: 0;
-	transition: opacity 500ms ease-in-out;
-	z-index: 1;
+	transition: opacity 200ms ease-in-out;
 }
 .slide img {
 	width: 100%;
@@ -37,7 +36,6 @@ body {
 	border-radius: 5px;
 }
 .active-slide {
-	z-index: 2;
 	opacity: 1;
 }
 .carousel-btn {
@@ -52,7 +50,7 @@ body {
 	padding: 0 10px;
 	font-weight: bold;
 	color: rgba(255, 255, 255, 0.5);
-	transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+	transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
 }
 .carousel-btn:hover,
 .carousel-btn:focus-visible {
@@ -69,4 +67,30 @@ body {
 .next-btn {
 	border-radius: 0 5px 5px 0;
 	right: 0;
+}
+.radio-btn-container {
+	position: absolute;
+	display: flex;
+	list-style: none;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 25px;
+	gap: 10px;
+}
+.radio-btn {
+	border: 0;
+	outline: 0;
+	padding: 0;
+	width: 8px;
+	height: 8px;
+	border-radius: 16px;
+	cursor: pointer;
+	transition: width 200ms ease-in-out;
+}
+.radio-btn:hover,
+.radio-btn:focus-visible {
+	outline: 2px solid black;
+}
+.active-radio-btn {
+	width: 24px;
 }

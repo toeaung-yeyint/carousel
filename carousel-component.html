@@ -8,7 +8,7 @@
 		<title>Carousel component</title>
 	</head>
 	<body>
-		<section class="carousel" aria-label="Art image carousel">
+		<section class="carousel" aria-label="Image Carousel of Landmarks">
 			<ul class="slide-container">
 				<li class="slide active-slide">
 					<img src="bagan.jpg" alt="" />
@@ -27,16 +27,19 @@
 					<img src="great-pyramid.jpg" alt="" />
 				</li>
 			</ul>
-			<div class="radio-btn-container">
-				<ul>
-					<li class="radio-btn active-radio-btn"></li>
-					<li class="radio-btn"></li>
-					<li class="radio-btn"></li>
-					<li class="radio-btn"></li>
-				</ul>
-			</div>
-			<button class="carousel-btn prev-btn">&#x276E;</button>
-			<button class="carousel-btn next-btn">&#x276F;</button>
+			<button class="carousel-btn prev-btn" aria-label="Previous Button">
+				&#x276E;
+			</button>
+			<button class="carousel-btn next-btn" aria-label="Next Button">
+				&#x276F;
+			</button>
+			<nav class="radio-btn-container" aria-label="Radio Button Navigation">
+				<button class="radio-btn active-radio-btn"></button>
+				<button class="radio-btn"></button>
+				<button class="radio-btn"></button>
+				<button class="radio-btn"></button>
+				<button class="radio-btn"></button>
+			</nav>
 		</section>
 	</body>
 </html>
