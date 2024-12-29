@@ -47,7 +47,7 @@ body {
 	border: none;
 	background: none;
 	font-size: 24px;
-	padding: 0 10px;
+	padding: 0 7px;
 	font-weight: bold;
 	color: rgba(255, 255, 255, 0.5);
 	transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
@@ -55,7 +55,7 @@ body {
 .carousel-btn:hover,
 .carousel-btn:focus-visible {
 	color: white;
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(255, 255, 255, 0.3);
 }
 .carousel-btn:focus {
 	outline: none;
@@ -89,7 +89,7 @@ body {
 }
 .radio-btn:hover,
 .radio-btn:focus-visible {
-	outline: 2px solid black;
+	outline: 3px solid black;
 }
 .active-radio-btn {
 	width: 24px;
