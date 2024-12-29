@@ -1,52 +1,49 @@
 const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
-const allSlides = document.querySelectorAll(".slide");
-const allRadioBtns = document.querySelectorAll(".radio-btn");
-let currentActiveSlide = 0;
+const slides = Array.from(document.querySelectorAll(".slide"));
+const radioBtns = Array.from(document.querySelectorAll(".radio-btn"));
 const carousel = document.querySelector(".carousel");
-
-prevBtn.addEventListener("click", () => {
-	allSlides[currentActiveSlide].classList.remove("active-slide");
-	allRadioBtns[currentActiveSlide].classList.remove("active-radio-btn");
-	if (currentActiveSlide <= 0) {
-		currentActiveSlide = allSlides.length - 1;
-		allSlides[currentActiveSlide].classList.add("active-slide");
-		allRadioBtns[currentActiveSlide].classList.add("active-radio-btn");
-	} else {
-		currentActiveSlide -= 1;
-		allSlides[currentActiveSlide].classList.add("active-slide");
-		allRadioBtns[currentActiveSlide].classList.add("active-radio-btn");
-	}
-});
-
-nextBtn.addEventListener("click", () => {
-	allSlides[currentActiveSlide].classList.remove("active-slide");
-	allRadioBtns[currentActiveSlide].classList.remove("active-radio-btn");
-	if (currentActiveSlide >= allSlides.length - 1) {
-		currentActiveSlide = 0;
-		allSlides[currentActiveSlide].classList.add("active-slide");
-		allRadioBtns[currentActiveSlide].classList.add("active-radio-btn");
-	} else {
-		currentActiveSlide += 1;
-		allSlides[currentActiveSlide].classList.add("active-slide");
-		allRadioBtns[currentActiveSlide].classList.add("active-radio-btn");
-	}
-});
-
-allRadioBtns.forEach((radioBtn, index) => {
-	radioBtn.addEventListener("click", (e) => {
-		allSlides[currentActiveSlide].classList.remove("active-slide");
-		allRadioBtns[currentActiveSlide].classList.remove("active-radio-btn");
-		currentActiveSlide = index;
-		allSlides[currentActiveSlide].classList.add("active-slide");
-		allRadioBtns[currentActiveSlide].classList.add("active-radio-btn");
-	});
-});
-
 let startX = 0;
 let currentX = 0;
 let diff = 0;
 let isSwiping = false;
+
+const handlePrevNextBtn = (e) => {
+	let activeSlideIndex = slides.indexOf(
+		document.querySelector(".active-slide")
+	);
+	slides[activeSlideIndex].classList.remove("active-slide");
+	radioBtns[activeSlideIndex].classList.remove("active-radio-btn");
+	if (e.target.dataset.button === "next") {
+		activeSlideIndex >= slides.length - 1
+			? (activeSlideIndex = 0)
+			: (activeSlideIndex += 1);
+	}
+	if (e.target.dataset.button === "prev") {
+		activeSlideIndex <= 0
+			? (activeSlideIndex = slides.length - 1)
+			: (activeSlideIndex -= 1);
+	}
+	slides[activeSlideIndex].classList.add("active-slide");
+	radioBtns[activeSlideIndex].classList.add("active-radio-btn");
+};
+
+const handleRadioBtn = (index) => {
+	let activeSlideIndex = slides.indexOf(
+		document.querySelector(".active-slide")
+	);
+	slides[activeSlideIndex].classList.remove("active-slide");
+	radioBtns[activeSlideIndex].classList.remove("active-radio-btn");
+	activeSlideIndex = index;
+	slides[activeSlideIndex].classList.add("active-slide");
+	radioBtns[activeSlideIndex].classList.add("active-radio-btn");
+};
+
+prevBtn.addEventListener("click", (e) => handlePrevNextBtn(e));
+nextBtn.addEventListener("click", (e) => handlePrevNextBtn(e));
+radioBtns.forEach((radioBtn, index) => {
+	radioBtn.addEventListener("click", () => handleRadioBtn(index));
+});
 
 carousel.addEventListener("touchstart", (e) => {
 	startX = e.touches[0].clientX;
@@ -60,35 +57,13 @@ carousel.addEventListener("touchmove", (e) => {
 	}
 });
 
-carousel.addEventListener("touchend", (e) => {
+carousel.addEventListener("touchend", () => {
 	if (!isSwiping) return;
-
 	isSwiping = false;
-
 	if (diff > 50) {
-		allSlides[currentActiveSlide].classList.remove("active-slide");
-		allRadioBtns[currentActiveSlide].classList.remove("active-radio-btn");
-		if (currentActiveSlide >= allSlides.length - 1) {
-			currentActiveSlide = 0;
-			allSlides[currentActiveSlide].classList.add("active-slide");
-			allRadioBtns[currentActiveSlide].classList.add("active-radio-btn");
-		} else {
-			currentActiveSlide += 1;
-			allSlides[currentActiveSlide].classList.add("active-slide");
-			allRadioBtns[currentActiveSlide].classList.add("active-radio-btn");
-		}
+		handlePrevNextBtn({ target: { dataset: { button: "next" } } });
 	}
 	if (diff < -50) {
-		allSlides[currentActiveSlide].classList.remove("active-slide");
-		allRadioBtns[currentActiveSlide].classList.remove("active-radio-btn");
-		if (currentActiveSlide <= 0) {
-			currentActiveSlide = allSlides.length - 1;
-			allSlides[currentActiveSlide].classList.add("active-slide");
-			allRadioBtns[currentActiveSlide].classList.add("active-radio-btn");
-		} else {
-			currentActiveSlide -= 1;
-			allSlides[currentActiveSlide].classList.add("active-slide");
-			allRadioBtns[currentActiveSlide].classList.add("active-radio-btn");
-		}
+		handlePrevNextBtn({ target: { dataset: { button: "prev" } } });
 	}
 });

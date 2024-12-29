@@ -9,10 +9,10 @@ body {
 	margin-top: 100px;
 }
 .carousel {
-	width: calc(100% - 40px);
+	width: calc(100% - 20px);
 	aspect-ratio: 16 / 9;
 	position: relative;
-	margin: 0 20px;
+	margin: 0 10px;
 }
 .slide-container {
 	width: 100%;
